@@ -1,9 +1,8 @@
 <template>
     <div class="index">
         <Header />
-        <div class="index__content">
-            <Directions />
-        </div>
+        <Directions class="index__directions" />
+        <SortItems />
     </div>
 </template>
 
