@@ -1,9 +1,10 @@
-from sqlalchemy import Boolean, Column, ForeignKey, Integer, String
+from sqlalchemy import Boolean, Column, ForeignKey, Integer, String, Date, DECIMAL
 from sqlalchemy.orm import relationship
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
+from src.models.init_db import create_data
 from src.settings import settings
 
 
@@ -38,25 +39,31 @@ class Product(Base):
     description = Column(String, index=True)
     owner_id = Column(Integer, ForeignKey("users.id"))
     category_id = Column(Integer, ForeignKey("categories.id"))
+    price_per_hour = Column(DECIMAL)
+    available_from = Column(Date, nullable=True)
+    available_to = Column(Date, nullable=True)
 
     owner = relationship("User", back_populates="products")
     # category = relationship("Category", back_populates="products")
 
 
-# class Order(Base):
-#     __tablename__ = "orders"
-#
-#     id = Column(Integer, primary_key=True)
-#     customer_id = Column(Integer, ForeignKey("users.id"))
-#     vendor_id = Column(Integer, ForeignKey("users.id"))
-#
-#     customer = relationship("User", back_populates="customer_orders")
-#     vendor = relationship("User", back_populates="vendor_orders")
+class Order(Base):
+    __tablename__ = "orders"
+
+    id = Column(Integer, primary_key=True)
+    customer_id = Column(Integer, ForeignKey("users.id"))
+    vendor_id = Column(Integer, ForeignKey("users.id"))
+
+    customer = relationship("User", foreign_keys=[customer_id])
+    vendor = relationship("User", foreign_keys=[vendor_id])
 
 
 if __name__ == "__main__":
     # Create the tables in the database
+    print(engine)
+    Base.metadata.drop_all(engine)
     Base.metadata.create_all(engine)
+    # create_data()
 
 
 

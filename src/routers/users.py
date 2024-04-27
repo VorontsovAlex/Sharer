@@ -49,7 +49,7 @@ class UserLogin(BaseModel):
 
 # Route for user registration
 @router.post("/users/register/")
-async def register_user(user: UserRegister, db: Session = Depends(get_db), dependencies=Depends(JWTBearer())):
+async def register_user(user: UserRegister, db: Session = Depends(get_db)):
     if user_db_service.get_object_by_email(db, user.email):
         raise HTTPException(status_code=400, detail="Username already registered")
 
@@ -60,7 +60,7 @@ async def register_user(user: UserRegister, db: Session = Depends(get_db), depen
 
 
 @router.post("/users/login", tags=["user"])
-async def user_login(user: UserLogin, db: Session = Depends(get_db), dependencies=Depends(JWTBearer())):
+async def user_login(user: UserLogin, db: Session = Depends(get_db)):
     if user_db_service.check_user_creds(db, user.email, user.password):
         return signJWT(user.email)
     return {
