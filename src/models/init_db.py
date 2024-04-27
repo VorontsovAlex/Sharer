@@ -4,7 +4,6 @@ from src.settings import settings
 
 conn = psycopg2.connect(settings.db_url)
 
-
 queries = [
 "insert into categories (name) values ('airplanes');",
 "insert into categories (name) values ('vaccum cleaners');",
@@ -21,5 +20,6 @@ insert into public.products (title,description,owner_id,category_id) values
 """
 ]
 
-for query in queries:
-    conn.execute(query)
+def create_data():
+    for query in queries:
+        conn.execute(query)
