@@ -1,0 +1,27 @@
+.sort-items {
+  display: flex;
+  align-items: center;
+
+  padding-left: 32px;
+
+  &__item {
+    &:not(:last-child) {
+      margin-right: 20px;
+    }
+  }
+}
+
+.sort-items-item-element {
+  $self: &;
+
+  &--is-selected {
+    #{$self}__text {
+      color: #474747;
+    }
+  }
+
+  &__text {
+    color: #898989;
+    font-weight: 500;
+  }
+}
