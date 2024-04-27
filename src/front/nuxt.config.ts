@@ -32,5 +32,10 @@ export default defineNuxtConfig({
         }
       }
     }
-  }
+  },
+/*  runtimeConfig: {
+    public: {
+      baseURL: 'http://172.20.208.1:8080/',
+    },
+  },*/
 })

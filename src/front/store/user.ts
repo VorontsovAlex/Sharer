@@ -1,5 +1,6 @@
 import { createSharedComposable } from '@vueuse/core'
 import type {User} from "~/inrefaces/interfaces";
+import {clearTokenCookie, setTokenCookie} from "~/composable/useToken";
 
 export const useUserStore = createSharedComposable(() => {
    const user = ref({});
@@ -11,6 +12,11 @@ export const useUserStore = createSharedComposable(() => {
 
     const setToken = (newToken: string): void => {
         token.value = newToken;
+        setTokenCookie(newToken)
+    }
+    const clearToken = (): void => {
+        token.value = '';
+        clearTokenCookie()
     }
 
     const setAuthenticated = (isAuthenticated: boolean): void => {
@@ -24,5 +30,6 @@ export const useUserStore = createSharedComposable(() => {
         setToken,
         authenticated,
         setAuthenticated,
+        clearToken,
     }
 });
