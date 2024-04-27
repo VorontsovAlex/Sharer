@@ -5,18 +5,13 @@
 ```
 
 file_upload
-
-auth (open)
-
+logout
 crud orders 
 
 
-
-
-* base class for db queries
-* избранное
-* история заказов, другие страницы ..
-
-* доступность товара
-
+** base class for db queries (вс)
+** избранное (вс)
+** история заказов, другие страницы .. (вс)
+** доступность товара; 
+** vue js docker 
 ```
