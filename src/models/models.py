@@ -12,6 +12,13 @@ SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 Base = declarative_base()
 
 
+class Category(Base):
+    __tablename__ = "categories"
+
+    id = Column(Integer, primary_key=True)
+    name = Column(String, unique=True)
+
+
 class User(Base):
     __tablename__ = "users"
 
@@ -20,18 +27,31 @@ class User(Base):
     hashed_password = Column(String)
     is_active = Column(Boolean, default=True)
 
-    items = relationship("Item", back_populates="owner")
+    products = relationship("Product", back_populates="owner")
 
 
-class Item(Base):
-    __tablename__ = "items"
+class Product(Base):
+    __tablename__ = "products"
 
     id = Column(Integer, primary_key=True)
     title = Column(String, index=True)
     description = Column(String, index=True)
     owner_id = Column(Integer, ForeignKey("users.id"))
+    category_id = Column(Integer, ForeignKey("categories.id"))
 
-    owner = relationship("User", back_populates="items")
+    owner = relationship("User", back_populates="products")
+    # category = relationship("Category", back_populates="products")
+
+
+# class Order(Base):
+#     __tablename__ = "orders"
+#
+#     id = Column(Integer, primary_key=True)
+#     customer_id = Column(Integer, ForeignKey("users.id"))
+#     vendor_id = Column(Integer, ForeignKey("users.id"))
+#
+#     customer = relationship("User", back_populates="customer_orders")
+#     vendor = relationship("User", back_populates="vendor_orders")
 
 
 if __name__ == "__main__":

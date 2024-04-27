@@ -12,6 +12,12 @@ class UserDatabaseService:
         """
         return db.query(User).filter(User.id == user_id).first()
 
+    def get_object_by_email(self, db: Session, email: str):
+        """
+        Retrieve a user object by user_id from the database.
+        """
+        return db.query(User).filter(User.email == email).first()
+
     def get_all(self, db: Session):
         """
         Retrieve all user objects from the database.
@@ -35,3 +41,6 @@ class UserDatabaseService:
         db.commit()
         db.refresh(user)
         return user
+
+    def check_user_creds(self, db: Session, email: str, password: str):
+        return db.query(User).filter(User.email == email, User.hashed_password == password).first()

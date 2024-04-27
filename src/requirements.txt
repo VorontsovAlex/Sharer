@@ -9,3 +9,5 @@ argparse==1.4.0
 pydantic-settings==2.2.1
 sqlalchemy==2.0.29
 psycopg2-binary==2.9.9
+PyJWT==2.6.0
+python-decouple==3.7

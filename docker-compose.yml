@@ -1,0 +1,50 @@
+version: "3.8"
+services:
+  backend:
+    depends_on:
+      - db
+    build:
+      context: .
+      dockerfile: .Dockerfile
+    environment:
+      DB_HOST: db
+      DB_NAME: postgres
+    ports:
+      - "8080:8080"
+    networks:
+      - bridge
+    command: python src/app.py --host 0.0.0.0 --port 8080
+    stdin_open: true
+    tty: true
+
+  db:
+    image: postgres:15.4-alpine3.18
+    restart: always
+    ports:
+      - "0.0.0.0:5444:5432"
+    networks:
+      - bridge
+    volumes:
+      - "./db/data:/var/lib/postgresql/data"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+    working_dir: /root
+
+  cache:
+    image: redis:6.2-alpine
+    restart: always
+    command: redis-server --save 20 1 --loglevel warning
+    volumes:
+      - session:/data
+    ports:
+      - "6380:6380"
+
+networks:
+  bridge:
+    driver: bridge
+
+volumes:
+  session:
+    driver: local

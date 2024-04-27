@@ -23,3 +23,11 @@ class UserUpdate(UserBase):
     Pydantic model for updating an existing user.
     """
     pass
+
+
+class UserRegister(BaseModel):
+    """
+    Pydantic model for updating an existing user.
+    """
+    email: str
+    password: str
