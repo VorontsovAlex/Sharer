@@ -9,6 +9,7 @@
                     Email:
                 </label>
                 <input
+                    v-model="login"
                     type="text"
                     id="email"
                     name="email"
@@ -23,8 +24,10 @@
                 >
                     Пароль:
                 </label>
+              password -  {{password}}
                 <input
-                    type="text"
+                    v-model="password"
+                    type="password"
                     id="password"
                     name="password"
                     placeholder="Пароль"
@@ -55,11 +58,12 @@
 
             <Button
                 v-else
+                :disabled="isRegistrationDisabled"
                 @click="onRegistrationClick"
                 type="button"
                 class="form__action form-action"
             >
-                <span class="form-action__text">Зарегистрироваться</span>
+                <span  class="form-action__text">Зарегистрироваться</span>
             </Button>
         </form>
     </div>
@@ -67,6 +71,7 @@
 
 <script lang="ts">
     import { Button } from 'ant-design-vue';
+    import {registration} from "~/api/api";
 
     export default {
         components: {
@@ -77,6 +82,23 @@
                 type: Boolean,
                 default: false,
             },
+        },
+        setup() {
+          const login = ref('asd');
+          const password = ref('asd');
+
+          const onRegistrationClick = () => {
+            debugger
+            registration(unref(login), unref(password))
+          }
+
+          const isRegistrationDisabled = computed(() => unref(password).length === 0 || unref(login).length === 0)
+          return {
+            login,
+            password,
+            onRegistrationClick,
+            isRegistrationDisabled,
+          }
         }
     }
 </script>

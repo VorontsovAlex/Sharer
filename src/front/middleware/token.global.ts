@@ -16,4 +16,5 @@ export default defineNuxtRouteMiddleware((to, from) => {
         abortNavigation();
        //  return navigateTo('/login');
     }
+    const apiFetch = $fetch.create({ baseURL: '/api' })
 })
