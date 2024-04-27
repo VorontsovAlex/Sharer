@@ -1,28 +1,21 @@
 import type {User} from "~/inrefaces/interfaces";
 import {useMyFetch} from "~/composable/useMyFetch";
-export const login = async (login: string, password: string): Promise<User | undefined> => {
-    const { data } = await useFetch('/api/login')
-
-    if (data) {
-        return data
-    }
-
-    return undefined
+export const tryLogin = (login: string, password: string): Promise<any> => {
+    return useMyFetch('/users/login',{
+        method: 'post',
+        body: {
+            email: login,
+            password
+        }
+    })
 }
 
-export const registration = async (login: string, password: string): Promise<User | undefined> => {
-    const { data } = await useMyFetch('/users/register',{
+export const tryRegistration = (login: string, password: string): Promise<any> => {
+    return useMyFetch('/users/register/',{
             method: 'post',
             body: {
                 email: login,
                 password
             }
-        })
-
-    debugger
-    if (data) {
-        return data
-    }
-
-    return undefined
+    })
 }

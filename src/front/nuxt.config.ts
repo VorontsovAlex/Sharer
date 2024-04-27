@@ -33,9 +33,9 @@ export default defineNuxtConfig({
       }
     }
   },
-  runtimeConfig: {
+/*  runtimeConfig: {
     public: {
-      baseURL: process.env.NUXT_APP_BASE_URL || 'http://172.20.208.1:8080/',
+      baseURL: 'http://172.20.208.1:8080/',
     },
-  },
+  },*/
 })
