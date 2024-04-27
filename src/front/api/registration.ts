@@ -1,4 +1,3 @@
-import type {User} from "~/inrefaces/interfaces";
 import {useMyFetch} from "~/composable/useMyFetch";
 export const tryLogin = (login: string, password: string): Promise<any> => {
     return useMyFetch('/users/login',{
@@ -19,3 +18,4 @@ export const tryRegistration = (login: string, password: string): Promise<any> =
             }
     })
 }
+

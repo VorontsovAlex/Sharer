@@ -79,7 +79,7 @@
 
 <script lang="ts">
     import { Button } from 'ant-design-vue';
-    import {tryRegistration, tryLogin} from "~/api/api";
+    import {tryRegistration, tryLogin} from "~/api/registration";
     import {useUserStore} from "~/store/user";
 
     export default {
