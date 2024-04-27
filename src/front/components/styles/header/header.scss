@@ -1,12 +1,9 @@
 .header {
-  border: 1px dashed #000;
-
   display: flex;
+  justify-content: center;
   align-items: center;
-  justify-content: space-between;
 
-  padding: 0.5rem;
-  min-height: 2.875rem; // 46px
+  padding: 12px 16px;
 
   position: fixed;
   top: 0;
@@ -14,33 +11,78 @@
   left: 0;
   z-index: 50;
 
-  &__logo {
-    border: 1px dashed #000;
-    border-radius: 4px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    width: 5rem;
+  &__input {
+    min-height: 45px;
+    width: 100%;
   }
+}
 
-  &__nav {
-    display: flex;
-    align-items: center;
-  }
+.header-input {
+  $self: &;
 
-  &__button {
-    border: 1px dashed #000;
-    border-radius: 4px;
+  border: 1px solid #f2f2f2;
+  border-radius: 18px;
 
-    &:first-child {
-      margin-right: 0.5rem;
+  display: flex;
+
+  padding: 16px;
+
+  position: relative;
+  overflow: hidden;
+
+  &__input {
+    background-color: transparent;
+    border: none;
+    border-radius: inherit;
+    display: block;
+
+    font-size: 14px;
+    line-height: 16px;
+
+    padding-left: 40px;
+
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 50;
+
+    &:focus {
+      #{$self}__container {
+        opacity: 0;
+      }
     }
   }
 
-  &__profile {
-    border: 1px dashed #000;
-    border-radius: 4px;
+  &__container {
+    display: flex;
+    align-items: center;
+  }
+
+  &__icon {
+    display: block;
+
+    margin-right: 10px;
+
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.header-input-deco {
+  &__text {
+    display: block;
+
+    font-size: 12px;
+    line-height: 12px;
+
+    &--top {
+      color: #474747;
+    }
+
+    &--bottom {
+      color: #878787;
+    }
   }
 }
