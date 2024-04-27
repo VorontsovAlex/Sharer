@@ -2,6 +2,7 @@
   <div class="header">
     <div class="header__input header-input">
         <input
+            @click="openSeachPopup"
             type="text"
             class="header-input__input"
         >
@@ -21,9 +22,15 @@
 
 <script>
     export default {
-        props: {
-            // 
-        }
+        setup() {
+            const openSeachPopup = () => {
+                console.log('openSeachPopup');
+            }
+
+            return {
+                openSeachPopup,
+            };
+        },
     }
 </script>
 
