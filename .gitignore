@@ -1,7 +1,7 @@
 # Nuxt dev/build outputs
 .output
 .data
-.nuxt
+src/front/.nuxt
 .nitro
 .cache
 dist
@@ -17,6 +17,7 @@ logs
 .DS_Store
 .fleet
 .idea
+.idea/*
 
 # Local env files
 .env
