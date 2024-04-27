@@ -2,7 +2,8 @@
     <div class="index">
         <Header />
         <Directions class="index__directions" />
-        <SortItems />
+        <SortItems class="index__sort-items" />
+        <Offers />
     </div>
 </template>
 
