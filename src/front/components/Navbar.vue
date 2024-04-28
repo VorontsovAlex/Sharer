@@ -3,6 +3,7 @@
         <div
             v-for="item in navbarItems"
             :key="item.id"
+            @click="router.push(item.to)"
             class="navbar__item navbar-item"
         >
             <button
@@ -24,23 +25,30 @@
 </template>
 
 <script>
+    import router from "#app/plugins/router.js";
+
     export default {
+      methods: {router},
         setup() {
+          const router = useRouter()
             const navbarItems = [
                 {
                     id: 0,
                     icon: 'search',
                     text: 'Поиск',
+                    to: '/',
                 },
                 {
                     id: 1,
                     icon: 'heart',
                     text: ' Шеринг',
+                    to: '/sharing'
                 },
                 {
                     id: 2,
                     icon: 'account',
                     text: ' Профиль',
+                    to: '/profile'
                 },
             ];
 
@@ -51,6 +59,7 @@
             return {
                 navbarItems,
                 selectItem,
+                router,
             };
         }
     }
