@@ -17,14 +17,25 @@
                 @click="likeOffer"
                 type="button"
                 class="offer-header-like"
+                :class="{'offer-header-like--liked': offer.liked}"
                 aria-label="Нравится"
                 title="Нравится"
             >
-                <img
-                    src="~/assets/icons/heart.svg"
-                    alt=""
+                <svg
+                    width="800"
+                    height="800"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
                     class="offer-header-like__icon"
                 >
+                    <path
+                        clip-rule="evenodd"
+                        d="M12 6c-1.8-2.1-4.8-2.7-7-.8a5.3 5.3 0 0 0-.9 7.4 83.6 83.6 0 0 0 8 7.4l.4-.3c1.4-1.3 5.9-5.2 7.3-7.1a5.3 5.3 0 0 0-.8-7.4c-2.2-2-5.2-1.3-7 .8Z" stroke="#000"
+                        stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round"
+                    />
+                </svg>
             </button>
         </div>
         <Swiper
@@ -218,7 +229,7 @@
         },
         setup() {
             const router = useRouter()
-            const offer = {
+            const offer = ref({
                 id: 0,
                 images: [
                     {
@@ -246,6 +257,7 @@
                         isAccent: false,
                     },
                 ],
+                liked: false,
                 availableCount: 3,
                 currentCount: 1,
                 description: [
@@ -337,14 +349,14 @@
                         value: '2750 м',
                     },
                 ],
-            };
+            });
 
             const goBack = () => {
               router.go(-1);
             };
 
             const likeOffer = () => {
-                //
+                unref(offer).liked = !unref(offer).liked;
             };
 
             const selectDate = () => {
@@ -372,6 +384,7 @@
                 minusItem,
                 plusItem,
                 goBack,
+                likeOffer,
             };
         }
     }

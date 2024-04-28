@@ -128,6 +128,8 @@
 }
 
 .offer-header-like {
+  $like: &;
+
   background-color: #fff;
   border: 1px solid #f2f2f2;
   border-radius: 50%;
@@ -137,6 +139,16 @@
   justify-content: center;
 
   padding: 5px;
+
+  &--liked {
+    #{$like}__icon {
+      fill: #ff0000;
+
+      path {
+        stroke: #ff0000;
+      }
+    }
+  }
 
   &__icon {
     display: block;
