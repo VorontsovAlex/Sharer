@@ -40,8 +40,8 @@
                 },
                 {
                     id: 1,
-                    icon: 'heart',
-                    text: ' Шеринг',
+                    icon: 'share',
+                    text: ' Шерить',
                     to: '/'
                 },
                 {

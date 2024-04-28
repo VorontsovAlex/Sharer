@@ -50,14 +50,17 @@ export const offers = ref([
     },
     {
         id: 1,
-        image: 'offer-0',
+        image: 'dyson4.jpeg',
+        format: true,
         images: [
             {
-                id: 0,
-                name: 'offer-0',
+                id: 1,
+                format: true,
+                name: 'dyson4.jpeg',
             },
+
         ],
-        title: 'Палатка на выходные',
+        title: 'Пылесос Dyson Cyclone V11™ Absolute Extra',
         area: 'Mesa Geitonia (Лимасол)',
         dates: '4 - 31 Мая',
         price: '€14 / день',
@@ -95,22 +98,14 @@ export const offers = ref([
     },
     {
         id: 2,
-        image: 'offer-0',
+        image: 'drell',
         images: [
             {
                 id: 0,
-                name: 'offer-0',
-            },
-            {
-                id: 1,
-                name: 'offer-0',
-            },
-            {
-                id: 2,
-                name: 'offer-0',
+                name: 'drell',
             },
         ],
-        title: 'Палатка на выходные',
+        title: 'омпактная литий-ионная аккумуляторная дрель Makita 18V ',
         area: 'Mesa Geitonia (Лимасол)',
         dates: '4 - 31 Мая',
         price: '€15 / день',

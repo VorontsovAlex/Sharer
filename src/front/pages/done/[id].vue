@@ -7,7 +7,7 @@
           class="done__alert"
       >
       <p class="done__id">
-        ID: {{ randomOrder }}
+        ID: {{ randomOrder }} | {{offer.id}}
       </p>
       <p class="done__status">
         {{ offer.status }}
@@ -26,8 +26,9 @@
                     </span>
         </li>
       </ul>
+
       <img
-          :src="`/_nuxt/assets/images/offers/${offer.image}.jpg`"
+          :src="offer.format ? `/_nuxt/assets/images/offers/${offer.image}` : `/_nuxt/assets/images/offers/${offer.image}.jpg`"
           alt="Изображение товара"
           class="done__image"
       >
@@ -76,50 +77,6 @@
 import {offers} from '~/components/constants/offers'
 export default {
   setup() {
-   /* const offer = ref({
-      id: '000000001',
-      status: 'Подтверждено',
-      info: [
-        {
-          key: 'Дата',
-          value: '1 - 3 мая',
-        },
-        {
-          key: 'Количество',
-          value: '1 шт.',
-        },
-        {
-          key: 'Стоимость',
-          value: '€36 / 3 дня',
-        },
-      ],
-      image: 'offer-0',
-      title: 'Палатка на выходные Tramp Nishe 2',
-      description: [
-        'Вместимость 3 человека',
-        'Двухслойная палатка',
-        'Вход внутренней палатки продублированы москитной сеткой',
-        'Вес: 3900гр',
-        'Внешний размер: 360x220x130см',
-      ],
-      socials: [
-        {
-          name: 'Reddy',
-          href: 'https://reddy.team',
-          image: 'rd',
-        },
-        {
-          name: 'Telegram',
-          href: 'https://web.telegram.org',
-          image: 'tg',
-        },
-        {
-          name: 'WhatsApp',
-          href: 'https://www.whatsapp.com',
-          image: 'wt',
-        },
-      ]
-    });*/
 
     const route = useRoute();
     const productId = computed(() => route.params.id)
