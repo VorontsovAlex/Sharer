@@ -1,6 +1,5 @@
 <template>
     <div class="offers">
-      searchQuery - {{searchQuery}}
         <div
             v-for="offer in sortedOffers"
             :key="offer.id"
@@ -132,7 +131,7 @@
               return unref(offers)
             })
             const goToOffer = (id: number) => {
-                router.push(`/sharer/${id}`)
+                router.push(`/offer/${id}`)
             }
 
             return {

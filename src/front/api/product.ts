@@ -7,3 +7,10 @@ export const loadProductList = (): Promise<any> => {
         }
     })
 }
+
+
+export const loadProduct = (id: number): Promise<any> => {
+    return useMyFetch(`/products/${id}`,{
+        method: 'get',
+    })
+}

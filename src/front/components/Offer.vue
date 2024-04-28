@@ -79,7 +79,7 @@
                 class="offer-counts-settings"
             >
                 <button
-                    @click="offer.onMinusClick"
+                    @click="minusItem"
                     type="button"
                     aria-label="Убавить"
                     title="Убавить"
@@ -88,10 +88,10 @@
                     <span class="offer-counts-settings__icon">-</span>
                 </button>
                 <p class="offer-counts-settings__value">
-                    {{ offer.currentCount }}
+                    {{ offerCountOrder }}
                 </p>
                 <button
-                    @click="offer.onPlusClick"
+                    @click="plusItem"
                     type="button"
                     aria-label="Прибавить"
                     title="Прибавить"
@@ -217,6 +217,7 @@
             SwiperSlide,
         },
         setup() {
+            const router = useRouter()
             const offer = {
                 id: 0,
                 images: [
@@ -336,31 +337,41 @@
                         value: '2750 м',
                     },
                 ],
-                onMinusClick: () => {
-                },
-                onPlusClick: () => {
-                },
             };
 
             const goBack = () => {
-                //
+              router.go(-1);
             };
 
             const likeOffer = () => {
-                // 
+                //
             };
 
             const selectDate = () => {
-                // 
+                //
             };
 
             const reserveOffer = () => {
-                // 
+                //
             };
+            const offerCountOrder = ref(1)
+          const isMinusBtmDisabled = ref(false);
+            const minusItem = () => {
+              if (offerCountOrder.value > 0) {
+                isMinusBtmDisabled.value = false;
+                return --offerCountOrder.value;
+              }
+              isMinusBtmDisabled.value = true;
+            }
+            const plusItem = () => ++offerCountOrder.value;
 
             return {
                 offer,
                 modules: [Pagination],
+                offerCountOrder,
+                minusItem,
+                plusItem,
+                goBack,
             };
         }
     }
