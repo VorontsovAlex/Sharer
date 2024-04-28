@@ -4,7 +4,8 @@ from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
-# from src.models.init_db import create_data
+from src.models.init_db import create_initial_data, drop_all_tables
+from src.models.update_sequnce import update_sequence
 from src.settings import settings
 print(settings)
 
@@ -37,8 +38,8 @@ class Product(Base):
     id = Column(Integer, primary_key=True)
     title = Column(String, index=True)
     description = Column(String, index=True)
-    owner_id = Column(Integer, ForeignKey("users.id"))
-    category_id = Column(Integer, ForeignKey("categories.id"))
+    owner_id = Column(Integer, ForeignKey("users.id", ondelete='CASCADE'))
+    category_id = Column(Integer, ForeignKey("categories.id", ondelete='CASCADE'))
     price_per_hour = Column(DECIMAL)
     available_from = Column(Date, nullable=True)
     available_to = Column(Date, nullable=True)
@@ -51,7 +52,7 @@ class ProductImages(Base):
     __tablename__ = "product_images"
 
     id = Column(Integer, primary_key=True)
-    product_id = Column(Integer, ForeignKey("products.id"))
+    product_id = Column(Integer, ForeignKey("products.id", ondelete='CASCADE'))
     filename = Column(String, index=True)
     file_path = Column(String)
 
@@ -62,8 +63,8 @@ class Order(Base):
     __tablename__ = "orders"
 
     id = Column(Integer, primary_key=True)
-    customer_id = Column(Integer, ForeignKey("users.id"))
-    vendor_id = Column(Integer, ForeignKey("users.id"))
+    customer_id = Column(Integer, ForeignKey("users.id", ondelete='CASCADE'))
+    vendor_id = Column(Integer, ForeignKey("users.id", ondelete='CASCADE'))
 
     customer = relationship("User", foreign_keys=[customer_id])
     vendor = relationship("User", foreign_keys=[vendor_id])
@@ -71,10 +72,10 @@ class Order(Base):
 
 if __name__ == "__main__":
     # Create the tables in the database
-    print(engine)
-    Base.metadata.drop_all(engine)
+    drop_all_tables()
     Base.metadata.create_all(engine)
-    # create_data()
+    create_initial_data()
+    update_sequence()
 
 # #
 # # File storage functions

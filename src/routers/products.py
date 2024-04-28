@@ -1,4 +1,6 @@
-from fastapi import APIRouter, Depends, Query, HTTPException
+import os
+
+from fastapi import APIRouter, Depends, Query, HTTPException, Path
 from sqlalchemy.orm import Session
 from fastapi import FastAPI, File, UploadFile
 
@@ -6,6 +8,7 @@ from src.auth import JWTBearer
 from src.database.products import ProductDatabaseService
 from src.utils.helpers import get_db
 from src.validators.products import ProductCreate, ProductUpdate
+from src.models.models import ProductImages
 
 router = APIRouter()
 product_db_service = ProductDatabaseService()
@@ -55,34 +58,34 @@ def update_product(
     return updated_product
 
 
-@router.put("/products/{product_id}/image_upload")
-async def create_upload_file(uploaded_file: UploadFile = File(...)):
-    file_location = f"models/source/images/{uploaded_file.filename}"
+@router.post("/products/{product_id}/image_upload")
+async def create_upload_file(
+    db: Session = Depends(get_db),
+    uploaded_file: UploadFile = File(...),
+    product_id: int = Path()
+):
+    file_location = os.path.join(os.getcwd(), 'src/models/source/images/', uploaded_file.filename)
+
     with open(file_location, "wb+") as file_object:
         file_object.write(uploaded_file.file.read())
+
+    product_db_service.save_product_image(
+        db, product_id=product_id, filename=uploaded_file.filename, filelocation=file_location
+    )
     return {"info": f"file '{uploaded_file.filename}' saved at '{file_location}'"}
 
 
-# # API endpoints
-# @app.post("/upload/")
-# async def upload_file(file: UploadFile = File(...)):
-#     filename = save_file(file)
-#     db = SessionLocal()
-#     db_file = FileModel(filename=filename, file_path=get_file_path(filename))
-#     db.add(db_file)
-#     db.commit()
-#     db.refresh(db_file)
-#     return {"filename": filename, "file_path": db_file.file_path}
-#
-# @app.get("/files/", response_model=List[FileModel])
-# async def get_files():
-#     db = SessionLocal()
-#     return db.query(FileModel).all()
-#
-# @app.get("/file/{file_id}/")
-# async def get_file(file_id: int):
-#     db = SessionLocal()
-#     file = db.query(FileModel).filter(FileModel.id == file_id).first()
-#     if not file:
-#         raise HTTPException(status_code=404, detail="File not found")
-#     return {"filename": file.filename, "file_path": file.file_path}
+@router.get("/products/{product_id}/images")
+async def get_files_by_producct(
+    db: Session = Depends(get_db),
+    product_id: int = Path()
+):
+    files = db.query(ProductImages).filter(ProductImages.id == product_id).all()
+
+    if not files:
+        raise HTTPException(status_code=404, detail="File not found")
+
+    return [
+        {"filename": file.filename, "file_path": file.file_path}
+        for file in files
+    ]

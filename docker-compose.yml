@@ -16,6 +16,7 @@ services:
     command: python src/app.py --host 0.0.0.0 --port 8080
     stdin_open: true
     tty: true
+#    entrypoint: /bin/sh -c ".init_db.sh"
 
   db:
     image: postgres:15.4-alpine3.18

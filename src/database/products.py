@@ -1,5 +1,5 @@
 from sqlalchemy.orm import Session
-from src.models.models import Product
+from src.models.models import Product, ProductImages
 from src.validators.products import ProductCreate, ProductUpdate
 
 
@@ -30,3 +30,10 @@ class ProductDatabaseService:
         db.commit()
         db.refresh(product)
         return product
+
+    def save_product_image(self, db: Session, product_id, filename: str, filelocation: str):
+        product_image = ProductImages(product_id=product_id, filename=filename, file_path=filelocation)
+        db.add(product_image)
+        db.commit()
+        db.refresh(product_image)
+        return product_image
