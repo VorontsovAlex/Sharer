@@ -109,7 +109,7 @@
                 class="offer-dates__select offer-dates-select"
             >
                 <span class="offer-dates-select__text">
-                    Выберите дату
+                    {{ offer.dates }}
                 </span>
             </button>
             <button
