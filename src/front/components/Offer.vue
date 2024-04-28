@@ -252,7 +252,7 @@
 
             const reserveOffer = () => {
                 reserveProduct(props.id)
-                router.push('/done')
+                router.push(`/done/${props.id}`)
             };
             const offerCountOrder = ref(1)
           const isMinusBtmDisabled = ref(false);
