@@ -1,6 +1,5 @@
 <template>
     <div class="form">
-        <form action="#">
             <div class="form__item">
                 <label
                     class="form__label"
@@ -53,13 +52,13 @@
                 Запомнить меня
               </label>
             </div>
-            <!-- <router-link to="/registration">Зарегистрироваться</router-link> -->
+             <router-link class="form__action" to="/registration">Зарегистрироваться</router-link>
           </div>
             <div
-                v-if="isRegistered"
+                v-if="!isRegistered"
                 class="form__row"
             >
-                <!-- <router-link to="/login">Войти</router-link> -->
+                 <router-link class="form__action" to="/login">Войти</router-link>
             </div>
             <button
                 v-if="isRegistered"
@@ -68,7 +67,6 @@
             >
                 <span class="form-action__text">Войти</span>
             </button>
-
             <button
                 v-else
                 :disabled="isRegistrationDisabled"
@@ -78,7 +76,6 @@
             >
                 <span  class="form-action__text">Зарегистрироваться</span>
             </button>
-        </form>
     </div>
 </template>
 
@@ -106,7 +103,7 @@
           const onRegistrationClick = async () => {
             const response = await tryRegistration(unref(login), unref(password))
 
-            if (response.status === 'success') {
+            if (unref(response.status) === 'success') {
               await router.push('/login');
             } else {
               errorMessage.value = unref(response.error)?.data?.detail;
