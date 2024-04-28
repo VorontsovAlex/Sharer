@@ -4,7 +4,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
-from src.models.init_db import create_data
+# from src.models.init_db import create_data
 from src.settings import settings
 print(settings)
 
@@ -47,6 +47,17 @@ class Product(Base):
     # category = relationship("Category", back_populates="products")
 
 
+class ProductImages(Base):
+    __tablename__ = "product_images"
+
+    id = Column(Integer, primary_key=True)
+    product_id = Column(Integer, ForeignKey("products.id"))
+    filename = Column(String, index=True)
+    file_path = Column(String)
+
+    # product = relationship("Product", back_populates="images")
+
+
 class Order(Base):
     __tablename__ = "orders"
 
@@ -65,5 +76,13 @@ if __name__ == "__main__":
     Base.metadata.create_all(engine)
     # create_data()
 
-
+# #
+# # File storage functions
+# def save_file(file: UploadFile) -> str:
+#     with open(file.filename, "wb") as buffer:
+#         buffer.write(file.file.read())
+#     return file.filename
+#
+# def get_file_path(filename: str) -> str:
+#     return filename  # Modify this function based on your file storage mechanism
 
