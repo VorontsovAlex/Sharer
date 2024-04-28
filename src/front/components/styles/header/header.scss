@@ -55,6 +55,8 @@
   &__container {
     display: flex;
     align-items: center;
+
+    width: 100%;
   }
 
   &__icon {
@@ -65,21 +67,29 @@
     width: 16px;
     height: 16px;
   }
+
+  &__find {
+    margin-left: auto;
+  }
 }
 
 .header-input-deco {
-  &__text {
+  &__placeholder {
+    color: #474747;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 16px;
+  }
+}
+
+.header-input-find {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__icon {
     display: block;
-
-    font-size: 12px;
-    line-height: 12px;
-
-    &--top {
-      color: #474747;
-    }
-
-    &--bottom {
-      color: #878787;
-    }
+    width: 22px;
+    height: 22px;
   }
 }

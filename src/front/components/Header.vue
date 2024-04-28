@@ -13,9 +13,21 @@
                 class="header-input__icon"
             >
             <div v-if="!searchValue" class="header-input-deco">
-                <span class="header-input-deco__text header-input-deco__text--top">Что?</span>
-                <span class="header-input-deco__text header-input-deco__text--bottom">Искать везде, неделя, рядом</span>
+                <span class="header-input-deco__placeholder">
+                    Что ищем сегодня?
+                </span>
             </div>
+            <button
+                @click="openFindPopup"
+                type="button"
+                class="header-input__find header-input-find"
+            >
+                <img
+                    src="~/assets/icons/find.svg"
+                    alt=""
+                    class="header-input-find__icon"
+                >
+            </button>
         </div>
     </div>
   </div>
@@ -32,6 +44,10 @@
                 console.log('openSeachPopup');
             }
 
+            const openFindPopup = () => {
+                console.log('openFindPopup');
+            };
+
             watch(searchValue, (newValue) => {
               if (newValue.length > 3) {
                 setSearchQuery(newValue);
@@ -41,6 +57,7 @@
             })
             return {
                 openSeachPopup,
+                openFindPopup,
                 searchValue,
             };
         },
