@@ -17,10 +17,10 @@
                     alt=""
                     class="directions-item__image"
                 >
-                <span class="directions-item__text">
-                    {{ direction.text }}
-                </span>
             </button>
+            <span class="directions-item__text">
+                {{ direction.text }}
+            </span>
         </div>
     </div>
   </div>
