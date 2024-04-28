@@ -1,17 +1,12 @@
 # Sharer
 
+# Запуск сервисов в docker
+sudo docker-compose up -d
 
-# todo
-```
+# Запуск фронтенда
+cd .\src\front\
+yarn install\
+yarn dev
 
-file_upload
-logout
-crud orders 
-
-
-** base class for db queries (вс)
-** избранное (вс)
-** история заказов, другие страницы .. (вс)
-** доступность товара; 
-** vue js docker 
-```
+Проект развернут тут
+https://sharer.ngrok.app/

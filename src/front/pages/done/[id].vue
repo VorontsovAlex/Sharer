@@ -7,7 +7,7 @@
           class="done__alert"
       >
       <p class="done__id">
-        ID: {{ randomOrder }} | {{offer.id}}
+        ID: {{ randomOrder }}
       </p>
       <p class="done__status">
         {{ offer.status }}
@@ -86,7 +86,7 @@ export default {
     })
 
     const randomOrder = computed(() => {
-      return  Math.floor(Math.random() * 100);
+      return  Math.floor(Math.random() * 100)+10;
     })
     return {
       offer,
