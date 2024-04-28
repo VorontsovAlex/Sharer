@@ -24,7 +24,7 @@
                 >
                     Пароль:
                 </label>
-              password -  {{password}}
+              <!-- password -  {{password}} -->
                 <input
                     v-model="password"
                     type="password"
@@ -40,31 +40,36 @@
               v-if="isRegistered"
               class="form__row"
           >
-            <div>
+            <div class="form__checkbox">
               <input
                   type="checkbox"
                   id="remember"
                   class="form__input form__input--checkbox"
               >
-              <label for="remember">Запомнить меня</label>
+              <label
+                for="remember"
+                class="form__remember"
+              >
+                Запомнить меня
+              </label>
             </div>
-            <router-link to="/registration">Зарегистрироваться</router-link>
+            <!-- <router-link to="/registration">Зарегистрироваться</router-link> -->
           </div>
             <div
-                v-if="!isRegistered"
+                v-if="isRegistered"
                 class="form__row"
             >
-                <router-link to="/login">Войти</router-link>
+                <!-- <router-link to="/login">Войти</router-link> -->
             </div>
-            <Button
+            <button
                 v-if="isRegistered"
                 @click="onLoginClick"
                 class="form__action form-action"
             >
                 <span class="form-action__text">Войти</span>
-            </Button>
+            </button>
 
-            <Button
+            <button
                 v-else
                 :disabled="isRegistrationDisabled"
                 @click="onRegistrationClick"
@@ -72,7 +77,7 @@
                 class="form__action form-action"
             >
                 <span  class="form-action__text">Зарегистрироваться</span>
-            </Button>
+            </button>
         </form>
     </div>
 </template>
