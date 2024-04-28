@@ -1,5 +1,6 @@
 .offers {
   padding-right: 15px;
+  padding-bottom: 70px;
   padding-left: 15px;
 
   &__item {
@@ -50,6 +51,7 @@
     border-radius: 20px;
 
     margin-bottom: 10px;
+    max-width: 580px;
     width: calc(100vw - 30px);
   }
 
