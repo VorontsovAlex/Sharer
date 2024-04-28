@@ -1,11 +1,9 @@
 import {useMyFetch} from "~/composable/useMyFetch";
 
-export const loadProductList = (login: string, password: string): Promise<any> => {
+export const loadProductList = (): Promise<any> => {
     return useMyFetch('/products/',{
         method: 'get',
         body: {
-            email: login,
-            password
         }
     })
 }

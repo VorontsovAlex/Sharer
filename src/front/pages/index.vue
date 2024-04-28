@@ -8,13 +8,24 @@
     </div>
 </template>
 
-<script>
+<script lang="ts">
+    import {useProductsStore} from "~/store/products.js";
+    import {loadProductList} from "~/api/product.js";
+
     export default {
-        props: {
-            isRegistered: {
-                type: Boolean,
-                default: false,
-            },
+        setup() {
+          const {productList, setProductList} = useProductsStore()
+          onMounted(async () => {
+            const result = await loadProductList()
+
+            if (unref(result.data)) {
+              setProductList(unref(result.data));
+            }
+          })
+
+          return {
+            productList,
+          }
         }
     }
 </script>
