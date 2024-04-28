@@ -128,7 +128,7 @@
                 type="button"
                 class="offer-dates__reserve offer-dates-reserve"
             >
-                <span class="offer-dates-reserve__text">
+                <span>
                     Забронировать
                 </span>
             </button>

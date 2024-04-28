@@ -83,9 +83,14 @@
 }
 
 .header-input-find {
+  cursor: pointer;
+
   display: flex;
   align-items: center;
   justify-content: center;
+
+  position: relative;
+  z-index: 50;
 
   &__icon {
     display: block;
