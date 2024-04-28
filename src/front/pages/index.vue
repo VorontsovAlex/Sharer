@@ -4,6 +4,7 @@
         <Directions class="index__directions" />
         <SortItems class="index__sort-items" />
         <Offers />
+        <Navbar />
     </div>
 </template>
 

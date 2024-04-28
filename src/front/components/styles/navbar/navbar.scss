@@ -1,0 +1,41 @@
+.navbar {
+  background-color: #fff;
+  border: 1px solid #f2f2f2;
+  border-radius: 20px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  position: fixed;
+  bottom: 8px;
+  right: 16px;
+  left: 16px;
+  z-index: 50;
+
+  padding-right: 30px;
+  padding-left: 30px;
+}
+
+.navbar-item {
+  &__button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+
+  &__icon {
+    display: block;
+    width: 18px;
+    height: 18px;
+  }
+
+  &__text {
+    color: #878787;
+    font-size: 12px;
+    line-height: 14px;
+  }
+}
