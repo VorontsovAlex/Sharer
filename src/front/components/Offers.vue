@@ -68,7 +68,7 @@
             const sortedOffers = computed(() => {
               if (unref(searchQuery)) {
                 return  unref(offers).filter((offer) => {
-                  return offer.title?.toLowerCase().includes(unref(searchQuery))
+                  return offer.title?.toLowerCase().includes(unref(searchQuery)?.toLowerCase())
                 })
               }
 

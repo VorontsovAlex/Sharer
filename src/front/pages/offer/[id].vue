@@ -1,6 +1,6 @@
 <template>
     <div class="offer">
-       <Offer />
+       <Offer :id="productId"/>
        <Navbar />
     </div>
 </template>
@@ -11,12 +11,14 @@
     export default {
         setup() {
           const route = useRoute()
+          const productId = computed(() => route.params.id)
 
           onMounted(() => {
-            loadProduct(route.params.id)
+            loadProduct(productId)
           })
-          return {
 
+          return {
+            productId
           }
         }
     }

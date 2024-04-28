@@ -2,7 +2,7 @@
     <div class="index">
         <Header />
         <Directions class="index__directions" />
-        <SortItems class="index__sort-items" />
+        <SortItems v-if="false" class="index__sort-items" />
         <Offers />
         <Navbar />
     </div>
