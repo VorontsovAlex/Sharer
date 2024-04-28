@@ -1,6 +1,5 @@
 <template>
     <div class="offers">
-      searchQuery - {{searchQuery}}
         <div
             v-for="offer in sortedOffers"
             :key="offer.id"
