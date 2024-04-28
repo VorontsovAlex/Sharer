@@ -1,13 +1,14 @@
 <template>
     <div class="offers">
+      searchQuery - {{searchQuery}}
         <div
-            v-for="offer in offers"
+            v-for="offer in sortedOffers"
             :key="offer.id"
             class="offers__item"
         >
             <!-- TODO @programm1st: @click & :src -->
             <button
-                @click="goToOffer(offer)"
+                @click="goToOffer(offer.id)"
                 type="button"
                 class="offers-item-element"
             >
@@ -48,11 +49,12 @@
     </div>
 </template>
 
-<script>
+<script lang="ts">
     import { Swiper, SwiperSlide } from 'swiper/vue';
     import { Pagination } from 'swiper/modules';
     import 'swiper/css/bundle';
     import 'swiper/css/pagination';
+    import {useProductsStore} from "~/store/products.js";
 
     export default {
         components: {
@@ -60,6 +62,8 @@
             SwiperSlide,
         },
         setup() {
+          const router = useRouter()
+          const {searchQuery} = useProductsStore()
             // TODO @programm1st
             const offers = ref([
                 {
@@ -118,9 +122,25 @@
                 },
             ]);
 
+            const sortedOffers = computed(() => {
+              if (unref(searchQuery)) {
+                return  unref(offers).filter((offer) => {
+                  return offer.title?.toLowerCase().includes(unref(searchQuery))
+                })
+              }
+
+              return unref(offers)
+            })
+            const goToOffer = (id: number) => {
+                router.push(`/sharer/${id}`)
+            }
+
             return {
                 offers,
+                sortedOffers,
+                searchQuery,
                 modules: [Pagination],
+                goToOffer,
             };
         }
     }
