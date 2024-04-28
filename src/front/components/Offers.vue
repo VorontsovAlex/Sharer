@@ -132,7 +132,7 @@
               return unref(offers)
             })
             const goToOffer = (id: number) => {
-                router.push(`/sharer/${id}`)
+                router.push(`/offer/${id}`)
             }
 
             return {

@@ -15,5 +15,5 @@
 </script>
 
 <style lang="scss" scoped>
-  @import "./styles/offer/offer";
+  @import "../styles/offer/offer";
 </style>
