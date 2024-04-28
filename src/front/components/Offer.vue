@@ -221,7 +221,7 @@
     import { Pagination } from 'swiper/modules';
     import 'swiper/css/bundle';
     import 'swiper/css/pagination';
-    import offer from '~/components/constants/offer.js'
+    import {offer} from '~/components/constants/offers'
 
     export default {
         components: {

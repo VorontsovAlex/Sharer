@@ -1,4 +1,60 @@
-const offer = ref({
+export const offers = ref([
+    {
+        id: 0,
+        image: 'offer-0',
+        images: [
+            {
+                id: 0,
+                name: 'offer-0',
+            },
+            {
+                id: 1,
+                name: 'offer-0',
+            },
+        ],
+        title: 'Палатка на выходные в оченнь хороший прекрасный теплый день',
+        area: 'Mesa Geitonia (Лимасол)',
+        dates: '1 - 4 Мая',
+        price: '€12 / день',
+    },
+    {
+        id: 1,
+        image: 'offer-0',
+        images: [
+            {
+                id: 0,
+                name: 'offer-0',
+            },
+        ],
+        title: 'Палатка на выходные',
+        area: 'Mesa Geitonia (Лимасол)',
+        dates: '4 - 31 Мая',
+        price: '€14 / день',
+    },
+    {
+        id: 2,
+        image: 'offer-0',
+        images: [
+            {
+                id: 0,
+                name: 'offer-0',
+            },
+            {
+                id: 1,
+                name: 'offer-0',
+            },
+            {
+                id: 2,
+                name: 'offer-0',
+            },
+        ],
+        title: 'Палатка на выходные',
+        area: 'Mesa Geitonia (Лимасол)',
+        dates: '4 - 31 Мая',
+        price: '€15 / день',
+    },
+]);
+export const offer = ref({
     id: 0,
     images: [
         {
