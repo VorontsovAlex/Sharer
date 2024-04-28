@@ -23,7 +23,7 @@
                         class="offers-item-element__swipe"
                     >
                         <img
-                            :src="`/_nuxt/assets/images/offers/${image.name}.jpg`"
+                            :src="image.format ? `/_nuxt/assets/images/offers/${image.name}` : `/_nuxt/assets/images/offers/${image.name}.jpg`"
                             :alt="offer.title"
                             class="offers-item-element__image"
                         >

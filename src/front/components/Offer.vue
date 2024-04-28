@@ -50,7 +50,7 @@
                 class="offer__swipe"
             >
                 <img
-                    :src="`/_nuxt/assets/images/offers/${image.name}.jpg`"
+                    :src="image.format ? `/_nuxt/assets/images/offers/${image.name}` : `/_nuxt/assets/images/offers/${image.name}.jpg`"
                     :alt="offer.title"
                     class="offer__image"
                 >
@@ -221,9 +221,9 @@
     import { Pagination } from 'swiper/modules';
     import 'swiper/css/bundle';
     import 'swiper/css/pagination';
-    import {offer} from '~/components/constants/offers'
     import {reserveProduct} from "~/api/product.js";
     import {number} from "vue-types";
+    import {offers} from "~/components/constants/offers";
 
     export default {
         components: {
@@ -238,6 +238,12 @@
       },
         setup(props) {
             const router = useRouter()
+            const route = useRoute()
+            const productId = computed(() => route.params.id)
+
+            const offer = unref(offers).find((itemOffer) => {
+              return Number(itemOffer.id) === Number(unref(productId))
+            })
             const goBack = () => {
               router.go(-1);
             };

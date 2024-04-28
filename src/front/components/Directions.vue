@@ -37,18 +37,8 @@
                     image: 'kamp',
                 },
                 {
-                    id: 1,
-                    text: 'Хобби',
-                    image: 'kamp',
-                },
-                {
                     id: 2,
                     text: 'Для дома',
-                    image: 'kamp',
-                },
-                {
-                    id: 3,
-                    text: 'Электроника',
                     image: 'kamp',
                 },
                 {
@@ -56,31 +46,7 @@
                     text: 'Стройка',
                     image: 'kamp',
                 },
-                {
-                    id: 5,
-                    text: 'Кемпинг',
-                    image: 'kamp',
-                },
-                {
-                    id: 6,
-                    text: 'Хобби',
-                    image: 'kamp',
-                },
-                {
-                    id: 7,
-                    text: 'Для дома',
-                    image: 'kamp',
-                },
-                {
-                    id: 8,
-                    text: 'Электроника',
-                    image: 'kamp',
-                },
-                {
-                    id: 9,
-                    text: 'Стройка',
-                    image: 'kamp',
-                },
+
             ];
 
             const selectDirection = (id) => {

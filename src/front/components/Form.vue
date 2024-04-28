@@ -96,8 +96,8 @@
         },
         setup() {
           const router = useRouter()
-          const login = ref('asd');
-          const password = ref('asd');
+          const login = ref('FTeam@mail.ru');
+          const password = ref('qwe');
           const errorMessage = ref('');
           const {setToken} = useUserStore();
           const onRegistrationClick = async () => {

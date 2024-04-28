@@ -42,13 +42,13 @@
                     id: 1,
                     icon: 'share',
                     text: ' Шерить',
-                    to: '/sharing'
+                    to: '/'
                 },
                 {
                     id: 2,
                     icon: 'account',
                     text: ' Профиль',
-                    to: '/profile'
+                    to: '/'
                 },
             ];
 
