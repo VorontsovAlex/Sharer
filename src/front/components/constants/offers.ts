@@ -16,6 +16,37 @@ export const offers = ref([
         area: 'Mesa Geitonia (Лимасол)',
         dates: '1 - 4 Мая',
         price: '€12 / день',
+        socials: [
+            {
+                name: 'Reddy',
+                href: 'https://reddy.team',
+                image: 'rd',
+            },
+            {
+                name: 'Telegram',
+                href: 'https://web.telegram.org',
+                image: 'tg',
+            },
+            {
+                name: 'WhatsApp',
+                href: 'https://www.whatsapp.com',
+                image: 'wt',
+            },
+        ],
+        info: [
+            {
+                key: 'Дата',
+                value: '1 - 3 мая',
+            },
+            {
+                key: 'Количество',
+                value: '1 шт.',
+            },
+            {
+                key: 'Стоимость',
+                value: '€36 / 3 дня',
+            },
+        ],
     },
     {
         id: 1,
@@ -30,6 +61,37 @@ export const offers = ref([
         area: 'Mesa Geitonia (Лимасол)',
         dates: '4 - 31 Мая',
         price: '€14 / день',
+        socials: [
+            {
+                name: 'Reddy',
+                href: 'https://reddy.team',
+                image: 'rd',
+            },
+            {
+                name: 'Telegram',
+                href: 'https://web.telegram.org',
+                image: 'tg',
+            },
+            {
+                name: 'WhatsApp',
+                href: 'https://www.whatsapp.com',
+                image: 'wt',
+            },
+        ],
+        info: [
+            {
+                key: 'Дата',
+                value: '1 - 3 мая',
+            },
+            {
+                key: 'Количество',
+                value: '1 шт.',
+            },
+            {
+                key: 'Стоимость',
+                value: '€36 / 3 дня',
+            },
+        ],
     },
     {
         id: 2,
@@ -52,6 +114,37 @@ export const offers = ref([
         area: 'Mesa Geitonia (Лимасол)',
         dates: '4 - 31 Мая',
         price: '€15 / день',
+        socials: [
+            {
+                name: 'Reddy',
+                href: 'https://reddy.team',
+                image: 'rd',
+            },
+            {
+                name: 'Telegram',
+                href: 'https://web.telegram.org',
+                image: 'tg',
+            },
+            {
+                name: 'WhatsApp',
+                href: 'https://www.whatsapp.com',
+                image: 'wt',
+            },
+        ],
+        info: [
+            {
+                key: 'Дата',
+                value: '1 - 3 мая',
+            },
+            {
+                key: 'Количество',
+                value: '1 шт.',
+            },
+            {
+                key: 'Стоимость',
+                value: '€36 / 3 дня',
+            },
+        ],
     },
 ]);
 export const offer = ref({
