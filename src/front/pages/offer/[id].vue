@@ -6,9 +6,17 @@
 </template>
 
 <script lang="ts">
+    import {loadProduct} from "~/api/product";
+
     export default {
         setup() {
+          const route = useRoute()
+
+          onMounted(() => {
+            loadProduct(route.params.id)
+          })
           return {
+
           }
         }
     }
