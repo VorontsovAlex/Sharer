@@ -1,0 +1,176 @@
+.done {
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    background-color: #576bf5;
+    border-radius: 50%;
+
+    content: "";
+    display: block;
+
+    position: absolute;
+    top: -1300px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 0;
+
+    width: 1408px;
+    height: 1650px;
+  }
+
+  &__container {
+    padding-top: 24px;
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+
+  &__alert {
+    margin-right: auto;
+    margin-bottom: 8px;
+    margin-left: auto;
+
+    position: relative;
+
+    width: 30px;
+    height: 30px;
+  }
+
+  &__id,
+  &__status {
+    color: #fff;
+
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 20px;
+
+    position: relative;
+    text-align: center;
+  }
+
+  &__id {
+    margin-bottom: 8px;
+    text-transform: uppercase;
+  }
+
+  &__status {
+    margin-bottom: 24px;
+  }
+
+  &__info {
+    margin-bottom: 30px;
+  }
+
+  &__image {
+    border: 1px solid #f2f2f2;
+    border-radius: 18px;
+
+    margin-bottom: 24px;
+
+    position: relative;
+
+    width: 100%;
+    height: auto;
+  }
+
+  &__title {
+    color: #474747;
+
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 21px;
+
+    margin-bottom: 12px;
+  }
+
+  &__description {
+    margin-bottom: 40px;
+  }
+
+  &__chat {
+    margin-bottom: 95px;
+  }
+}
+
+.done-info {
+  padding: 0;
+  position: relative;
+
+  &__item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &:not(:last-child) {
+      margin-bottom: 12px;
+    }
+  }
+
+  &__key,
+  &__value {
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 16px;
+
+    width: 45%;
+  }
+
+  &__value {
+    text-align: right;
+  }
+}
+
+.done-description {
+  padding-left: 15px;
+
+  &__item {
+    color: #474747;
+    font-size: 14px;
+    line-height: 16px;
+  }
+}
+
+.done-chat {
+  background: linear-gradient(to bottom, #456bf3 0%, #736bf9 100%);
+  border: 1px solid #626bf7;
+  border-radius: 20px;
+
+  padding-top: 40px;
+
+  &__image {
+    margin-right: auto;
+    margin-bottom: 10px;
+    margin-left: auto;
+
+    width: 40px;
+    height: auto;
+  }
+
+  &__text {
+    color: #fff;
+
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 20px;
+
+    margin-bottom: 55px;
+    text-align: center;
+  }
+}
+
+.done-chat-socials {
+  background-color: #fff;
+  border-radius: 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 20px 50px;
+
+  &__link {
+    width: 45px;
+    height: 45px;
+  }
+}
