@@ -1,6 +1,7 @@
 <template>
     <div class="offer">
        <Offer />
+       <Navbar />
     </div>
 </template>
 

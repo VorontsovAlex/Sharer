@@ -172,6 +172,36 @@
                 </li>
             </ul>
         </div>
+
+        <div class="offer__addresses offer-addresses">
+            <h3 class="offer-addresses__title">
+                Адреса
+            </h3>
+            <ul class="offer-addresses-list">
+                <li
+                    v-for="address in offer.addresses"
+                    :key="address.text"
+                    class="offer-addresses-list__item"
+                >
+                    <span class="offer-addresses-list__key">
+                        {{ address.key }}
+                    </span>
+                    <span class="offer-addresses-list__value">
+                        {{ address.value }}
+                    </span>
+                </li>
+            </ul>
+        </div>
+
+        <button
+            @click="reserveOffer"
+            type="button"
+            class="offer__reserve offer-reserve"
+        >
+            <span class="offer-reserve__text">
+                Забронировать
+            </span>
+        </button>
     </div>
 </template>
 
@@ -290,6 +320,20 @@
                     {
                         key: '4 недели',
                         value: '€224',
+                    },
+                ],
+                addresses: [
+                    {
+                        key: 'Меса Гитонья (Лимосол)',
+                        value: '1400 м',
+                    },
+                    {
+                        key: 'Айос Афанасиос (Лимасол)',
+                        value: '2000 м',
+                    },
+                    {
+                        key: 'Като Полемидия (Лимасол)',
+                        value: '2750 м',
                     },
                 ],
                 onMinusClick: () => {

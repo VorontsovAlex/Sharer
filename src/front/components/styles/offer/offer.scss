@@ -92,6 +92,16 @@
   &__description {
     margin-bottom: 32px;
   }
+
+  &__pricelist {
+    margin-bottom: 26px;
+  }
+
+
+  &__reserve {
+    margin: 35px 15px 60px;
+    width: calc(100% - 30px);
+  }
 }
 
 .offer-header-return {
@@ -341,7 +351,8 @@
   }
 }
 
-.offer-pricelist {
+.offer-pricelist,
+.offer-addresses {
   padding-right: 15px;
   padding-left: 15px;
 
@@ -355,7 +366,8 @@
   }
 }
 
-.offer-pricelist-list {
+.offer-pricelist-list,
+.offer-addresses-list {
   list-style: none;
   padding: 0;
 
@@ -384,5 +396,22 @@
     color: #474747;
     font-weight: 500;
     text-align: right;
+  }
+}
+
+.offer-reserve {
+  background-color: #446af2;
+  border-radius: 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 15px;
+
+  &__text {
+    color: #fff;
+    font-size: 14px;
+    line-height: 16px;
   }
 }
