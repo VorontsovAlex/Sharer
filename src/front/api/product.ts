@@ -14,3 +14,9 @@ export const loadProduct = (id: number): Promise<any> => {
         method: 'get',
     })
 }
+
+export const reserveProduct = (id: number): Promise<any> => {
+    return useMyFetch(`/products/reserve/${id}`,{
+        method: 'post',
+    })
+}

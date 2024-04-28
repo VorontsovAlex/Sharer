@@ -216,19 +216,27 @@
     </div>
 </template>
 
-<script>
+<script lang="ts">
     import { Swiper, SwiperSlide } from 'swiper/vue';
     import { Pagination } from 'swiper/modules';
     import 'swiper/css/bundle';
     import 'swiper/css/pagination';
     import {offer} from '~/components/constants/offers'
+    import {reserveProduct} from "~/api/product.js";
+    import {number} from "vue-types";
 
     export default {
         components: {
             Swiper,
             SwiperSlide,
         },
-        setup() {
+      props: {
+        id: {
+          type: number,
+          required: true
+        }
+      },
+        setup(props) {
             const router = useRouter()
             const goBack = () => {
               router.go(-1);
@@ -243,7 +251,8 @@
             };
 
             const reserveOffer = () => {
-                //
+                reserveProduct(props.id)
+                router.push('/done')
             };
             const offerCountOrder = ref(1)
           const isMinusBtmDisabled = ref(false);
@@ -264,6 +273,7 @@
                 plusItem,
                 goBack,
                 likeOffer,
+                reserveOffer,
             };
         }
     }
