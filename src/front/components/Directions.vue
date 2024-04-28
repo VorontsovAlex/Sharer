@@ -6,7 +6,7 @@
             :key="direction.id"
             class="directions__item directions-item"
         >
-            <!-- TODO @programm1st: @click & :src -->
+
             <button
                 @click="selectDirection(direction.id)"
                 type="button"
@@ -26,10 +26,12 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+    import {useUserStore} from "~/store/user.js";
+
     export default {
         setup() {
-            // TODO @programm1st
+          const {setSelectedGroup, selectedGroup} = useUserStore()
             const directions = [
                 {
                     id: 0,
@@ -39,23 +41,24 @@
                 {
                     id: 2,
                     text: 'Для дома',
-                    image: 'kamp',
+                    image: 'tex',
                 },
                 {
                     id: 4,
                     text: 'Стройка',
-                    image: 'kamp',
+                    image: 'tex2',
                 },
 
             ];
 
             const selectDirection = (id) => {
-                console.log('selectDirection: ', id);
+              setSelectedGroup(id)
             };
 
             return {
                 directions,
                 selectDirection,
+              selectedGroup
             };
         }
     }

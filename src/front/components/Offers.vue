@@ -55,6 +55,7 @@
     import 'swiper/css/pagination';
     import {useProductsStore} from "~/store/products.js";
     import {offers} from '~/components/constants/offers'
+    import {useUserStore} from "~/store/user";
 
     export default {
         components: {
@@ -64,6 +65,7 @@
         setup() {
           const router = useRouter()
           const {searchQuery} = useProductsStore()
+          const {selectedGroup} = useUserStore()
 
             const sortedOffers = computed(() => {
               if (unref(searchQuery)) {
@@ -74,11 +76,20 @@
 
               return unref(offers)
             })
+            const sortedOffersByAll = computed(() => {
+              debugger
+              if (unref(selectedGroup) === 0) {
+                let asd = unref(offers)[0]
+                debugger
+                return
+              }
+            })
             const goToOffer = (id: number) => {
                 router.push(`/offer/${id}`)
             }
 
             return {
+                sortedOffersByAll,
                 offers,
                 sortedOffers,
                 searchQuery,
