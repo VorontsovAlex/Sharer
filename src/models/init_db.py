@@ -24,7 +24,7 @@ def drop_all_tables():
 
 
 def create_initial_data():
-    with open('./source/products_with_categories.csv', mode='r') as file:
+    with open('./products_with_categories.csv', mode='r') as file:
         added_categories = dict()
         conn = psycopg2.connect(settings.db_url)
         cursor = conn.cursor()
@@ -47,7 +47,7 @@ def create_initial_data():
             title = row[1].replace("'", '')
             category_name = row[4].replace("'", '')
             file_name = row[2]
-            img_full_path = os.path.join(os.getcwd(), 'source/images/', file_name)
+            img_full_path = os.path.join(os.getcwd(), '/src/images/', file_name)
 
             if category_name in added_categories:
                 id_of_new_row = added_categories[category_name]

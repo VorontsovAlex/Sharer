@@ -14,6 +14,8 @@ services:
     networks:
       - bridge
     command: python src/app.py --host 0.0.0.0 --port 8080
+    volumes:
+      - backend_data:/src/images:rw  # Mount the persistent volume to store files
     stdin_open: true
     tty: true
 #    entrypoint: /bin/sh -c ".init_db.sh"
@@ -33,14 +35,23 @@ services:
       POSTGRES_DB: postgres
     working_dir: /root
 
-  cache:
-    image: redis:6.2-alpine
-    restart: always
-    command: redis-server --save 20 1 --loglevel warning
+#  cache:
+#    image: redis:6.2-alpine
+#    restart: always
+#    command: redis-server --save 20 1 --loglevel warning
+#    volumes:
+#      - session:/data
+#    ports:
+#      - "6380:6380"
+
+  vectors:
+    image: "redis/redis-stack-server"
     volumes:
-      - session:/data
+      - ./redis_data:/data:rw
+      - ./redis.conf:/usr/local/etc/redis/redis.conf
     ports:
-      - "6380:6380"
+      - 6379:6379
+    restart: always #unless-stopped
 
 networks:
   bridge:
@@ -49,3 +60,6 @@ networks:
 volumes:
   session:
     driver: local
+  backend_data:
+
+  redis_data:

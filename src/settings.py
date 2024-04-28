@@ -2,6 +2,7 @@ import os
 from typing import Optional
 
 from pydantic_settings import BaseSettings, SettingsConfigDict
+import embed
 
 
 DOTENV = os.path.join(os.path.dirname(__file__), ".env")
@@ -18,4 +19,6 @@ class Settings(BaseSettings):
 
 
 settings = Settings()
-print(settings)
+
+image_vectorizer = embed.ImageVectorizingModel("models/mobileclip_s0.pt")
+text_vectorizer = embed.TextVectorizingModel("models/bge.quant.onnx")
