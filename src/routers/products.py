@@ -135,7 +135,7 @@ async def get_files_by_producct(
 
 
 @router.get("/products/search/text")
-async def search_products123(
+async def search_products_text(
     db: Session = Depends(get_db),
     text_search: str = Query()
 ):

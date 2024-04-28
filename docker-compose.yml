@@ -16,6 +16,7 @@ services:
     command: python src/app.py --host 0.0.0.0 --port 8080
     volumes:
       - backend_data:/src/images:rw  # Mount the persistent volume to store files
+      - ./redis.conf:/usr/local/etc/redis/redis.conf
     stdin_open: true
     tty: true
 #    entrypoint: /bin/sh -c ".init_db.sh"
